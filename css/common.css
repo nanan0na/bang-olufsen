@@ -1,0 +1,84 @@
+@charset 'utf-8';
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+:root {
+  --main-color: #ffc356;
+  --title-color: #222;
+}
+html {
+  font-size: 62.5%; /* 1rem = 10px */
+  scroll-behavior: smooth;
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+}
+body {
+  font: 2rem/1.5 'SUIT', sans-serif;
+  color: var(--text-color);
+  text-transform: capitalize;
+}
+
+a,
+a:hover {
+  text-decoration: none;
+  color: inherit;
+}
+
+hr,
+.hidden {
+  position: absolute;
+  margin: -1px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+}
+
+::selection {
+  background: var(--main-color);
+  color: #fff;
+}
+img {
+  max-width: 100%;
+}
+button,
+label,
+a {
+  cursor: pointer;
+}
+
+.inner {
+  width: 175.6rem;
+  margin: 0 auto;
+  background: rgba(110, 97, 255, 0.3);
+}
+#header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(255, 43, 43, 0.2);
+  z-index: 100;
+  transition: 0.3s;
+}
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 8rem;
+  position: relative;
+  color: #fff;
+}
+.logo a {
+  display: block;
+  width: 4rem;
+  height: 4rem;
+  background: url(../img/favicon.png) no-repeat 0 0;
+}
+.submenu {
+  display: flex;
+}
+.submenu > li {
+  position: relative;
+}
+.submenu > li > a {
+  display: block;
+}
