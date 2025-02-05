@@ -17,18 +17,24 @@
     <link rel="stylesheet" href="./css/reset.css" />
     <link rel="stylesheet" href="./css/common.css" />
     <link rel="stylesheet" href="./css/main.css" />
+
+    <script src="./js/jquery-3.7.1.min.js"></script>
+    <script src="./js/common.js"></script>
   </head>
   <body>
     <header id="header">
       <div class="inner">
         <nav>
-          <div class="util">
+          <div class="menu">
             <div class="menu-open"></div>
-            <a href="#" class="btn-menu">
-              <span class="line"></span>
-              <span class="line"></span>
-              Menu</a
-            >
+            <div class="menu-icon">
+              <input class="menu-icon_cheeckbox" type="checkbox" />
+              <div>
+                <span class="line"></span>
+                <span class="line"></span>
+              </div>
+            </div>
+            <p>Menu</p>
           </div>
           <h1 class="logo">
             <a href="index.html"><i class="hidden">Bang&Olufsen</i></a>
@@ -41,7 +47,10 @@
       </div>
     </header>
     <main id="main">
-      <section class="section visual">
+      <section class="visual">
+        <!-- cursor!!! -->
+        <div class="cursor">Shop gifts</div>
+
         <div class="swiper-wrapper">
           <div class="slide-item swiper-slide">
             <img src="./img/main-visual01.jpg" alt="Start the new year with you" />
