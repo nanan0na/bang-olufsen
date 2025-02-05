@@ -20,6 +20,9 @@ body {
   word-break: keep-all;
   /* text-transform: capitalize; // ttu, 앞 대문자//ttc 전부 대문자 */
 }
+b {
+  display: block;
+}
 
 a,
 a:hover {

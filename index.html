@@ -15,11 +15,16 @@
     />
 
     <link rel="stylesheet" href="./css/reset.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="./css/common.css" />
     <link rel="stylesheet" href="./css/main.css" />
 
     <script src="./js/jquery-3.7.1.min.js"></script>
+    <!-- <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="./js/common.js"></script>
+    <script src="./js/main.js"></script>
   </head>
   <body>
     <header id="header">
@@ -50,29 +55,38 @@
       <section class="visual">
         <!-- cursor!!! -->
         <div class="cursor">Shop gifts</div>
-
-        <div class="swiper-wrapper">
-          <div class="slide-item swiper-slide">
-            <img src="./img/main-visual01.jpg" alt="Start the new year with you" />
-            <div class="visual-title inner">
-              <h2>Start the new year with you</h2>
-              <p>After a season of giving, take a moment to indulge in the finer things <b>– all for you.</b></p>
-            </div>
-          </div>
-          <div class="slide-item swiper-slide">
-            <img src="./img/main-visual02.jpg" alt="" />
-            <div class="visual-title inner">
-              <h2>Sound to be seen</h2>
-              <p>
-                Music with more zest. Comfort with more class. And a shine that sings. With Beoplay Eleven wireless
-                earbuds,<b>every note feels alive.</b>
-              </p>
-            </div>
-          </div>
-        </div>
         <!-- pagination -->
-        <div class="visual-pagination-wrap">
-          <div class="visual-pagination swiper-pagination"></div>
+        <div class="visual-pagination">
+          <span class="active"></span>
+          <span>03</span>
+        </div>
+        <div class="visual-slide swiper">
+          <div class="swiper-wrapper">
+            <div class="slide-item item1 swiper-slide">
+              <img src="./img/main-visual01.jpg" alt="Start the new year with you" class="visual-el" />
+              <div class="visual-title inner">
+                <h2>Start the new year with you</h2>
+                <p>After a season of giving, take a moment to indulge in the finer things <b>– all for you.</b></p>
+              </div>
+            </div>
+            <div class="slide-item item2 swiper-slide">
+              <img src="./img/main-visual02.jpg" alt="Sound to be seen" class="visual-el" />
+              <div class="visual-title inner">
+                <h2>Sound to be seen</h2>
+                <p>
+                  Music with more zest. Comfort with more class. And a shine that sings. With Beoplay Eleven wireless
+                  earbuds,<b>every note feels alive.</b>
+                </p>
+              </div>
+            </div>
+            <div class="slide-item item3 swiper-slide">
+              <video src="./video/visual01.mp4" class="visual-el" autoplay muted loop data-autoplay></video>
+              <div class="visual-title inner">
+                <h2>You dream it. We craft it.</h2>
+                <p>Sound? It’s personal. Introducing Bang & Olufsen Atelier.</p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
       <!-- e: visual -->
