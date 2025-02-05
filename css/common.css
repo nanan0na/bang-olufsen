@@ -2,7 +2,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 :root {
   --main-color: #ffc356;
-  --title-color: #222;
+  --title-color: #030303;
+  --text-color: #222;
+  --text-color-w: #f0f0f0;
 }
 html {
   font-size: 62.5%; /* 1rem = 10px */
@@ -14,6 +16,9 @@ body {
   font: 2rem/1.5 'SUIT', sans-serif;
   color: var(--text-color);
   text-transform: capitalize;
+  overflow-x: hidden;
+  word-break: keep-all;
+  /* text-transform: capitalize; // ttu, 앞 대문자//ttc 전부 대문자 */
 }
 
 a,
@@ -50,6 +55,8 @@ a {
   margin: 0 auto;
   background: rgba(110, 97, 255, 0.3);
 }
+
+/* header */
 #header {
   position: fixed;
   top: 0;
@@ -81,4 +88,79 @@ nav {
 }
 .submenu > li > a {
   display: block;
+}
+
+/* footer */
+#footer {
+  background: var(--title-color);
+  color: var(--text-color-w);
+  padding: 8rem 0 3rem;
+  font-family: 'Roboto';
+  /* height: 72rem; */
+}
+.footer-wrap {
+  height: 58rem;
+}
+.footer-con {
+  display: flex;
+  font-size: 2.2rem;
+}
+.footer-con li {
+  display: block;
+  width: 42rem;
+}
+.footer-con li:not(:first-child) {
+  margin-left: 22rem;
+}
+.footer-con strong {
+  font-weight: 600;
+}
+.footer-con p {
+  display: block;
+  margin-top: 1.2rem;
+  font-weight: 400;
+}
+.logo-footer {
+  margin-top: 5rem;
+  position: relative;
+}
+.logo-footer a {
+  position: absolute;
+  top: 0;
+  left: 31%;
+  display: block;
+  width: 12rem;
+  height: 4.6rem;
+  color: var(--title-color);
+  background-color: var(--main-color);
+  border-radius: 22px;
+  padding: 10px 15px;
+}
+.logo-footer a::before {
+  content: '';
+  position: absolute;
+  bottom: -20%;
+  left: -16%;
+  display: block;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background-color: var(--main-color);
+}
+.logo-footer-wrap {
+  font-family: 'SUIT';
+  letter-spacing: -1rem;
+  font-weight: 800;
+  font-size: 18rem;
+  position: relative;
+}
+.logo-footer-wrap .foo {
+  position: absolute;
+  top: 14rem;
+  right: 0rem;
+}
+.footer-wrap > p {
+  display: flex;
+  float: inline-end;
+  margin-top: 10rem;
 }
