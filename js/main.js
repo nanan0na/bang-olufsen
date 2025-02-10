@@ -24,7 +24,57 @@ document.addEventListener('DOMContentLoaded', function () {
       firstSpan.textContent = `0${currentIndex}`;
     }
   }
-
   // 초기 페이지네이션 업데이트
   updatePagination(swiper.realIndex);
+
+  // gsap our story
+
+  gsap.registerPlugin(ScrollTrigger);
+  const tl = gsap.timeline();
+  const video = document.querySelector('.our-story video');
+  const text = document.querySelector('.our-story-text');
+
+  ScrollTrigger.create({
+    trigger: video,
+    start: '250% center',
+    end: '1000% bottom',
+    onEnter: () => {
+      gsap.to(video, {
+        width: '100vw', // 화면 가득 채우기
+        height: '100vh',
+        left: '0',
+        top: '0',
+        position: 'fixed', // 화면에 고정
+        ease: 'power2.out',
+        duration: 0.5, // 0.5초 동안 확대
+      });
+      tl.to(text, {
+        color: '#fff',
+      });
+    },
+  });
+  ScrollTrigger.create({
+    trigger: text,
+    start: '250% center',
+    end: '1000% bottom',
+    onEnter: () => {
+      gsap.to(text, {
+        marginTop: '12rem',
+        ease: 'power2.out',
+        color: '#fff',
+        duration: 0.5, // 0.5초 동안 확대
+      });
+    },
+  });
+
+  tl.to(text, {
+    scrollTrigger: {
+      trigger: '.our-story',
+      markers: true,
+      start: 'top top',
+      end: '1000% bottom',
+      pin: '.our-story',
+      scrub: true,
+    },
+  });
 });
