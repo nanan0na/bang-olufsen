@@ -1,4 +1,18 @@
 $(document).on('mousemove', function (e) {
+  gsap.registerPlugin(ScrollTrigger);
+
+  const filter = document.querySelector('.world .professional .product'); // ✅ 올바른 선택자
+  gsap.to('nav', {
+    filter: 'invert(100%)',
+    scrollTrigger: {
+      trigger: filter, // ✅ .product 섹션이 트리거
+      start: 'center center',
+      end: 'center center',
+      toggleActions: 'play reverse play reverse',
+      markers: true, // 디버깅용 마커
+    },
+  });
+
   var xPos = e.pageX;
   var yPos = e.pageY;
   // console.log(xPos, yPos);
