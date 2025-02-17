@@ -332,7 +332,7 @@ document.addEventListener('DOMContentLoaded', function () {
         trigger: storeSection,
         start: 'top top',
         end: 'top 20%',
-        scrub: 1,
+        scrub: 3,
       },
     }
   );
