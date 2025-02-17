@@ -121,7 +121,7 @@
 
 /* our-story */
 .our-story {
-  margin-top: 16rem;
+  padding: 12rem 0 0;
   position: relative;
   cursor: none;
 }
@@ -375,6 +375,7 @@ h3 {
 
 .professional p {
   display: block;
+  color: var(--text-color);
   margin-top: 25rem;
   letter-spacing: -0.5px;
 }
@@ -442,7 +443,7 @@ h3 {
 .world-title .world-desc {
   margin-top: 17rem;
   width: 50rem;
-  color: #222;
+  color: var(--text-color);
   opacity: 70%;
 }
 .pagination {

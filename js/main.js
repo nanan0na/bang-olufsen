@@ -81,7 +81,6 @@ document.addEventListener('DOMContentLoaded', function () {
     end: '300% bottom',
     onEnter: () => {
       gsap.to(text, {
-        marginTop: '12rem',
         ease: 'power2.out',
         color: '#fff',
         duration: 0.5,
@@ -134,7 +133,7 @@ document.addEventListener('DOMContentLoaded', function () {
   bar.style.width = '10%';
   //
 
-  // 📌 추가할 제품 목록 (02번부터 추가)
+  // 추가할 제품 목록 (02번부터 추가)
   const products = [
     { img: './img/main-product02.jpg', name: 'Beosound A5', price: 'From ₩2,090,000' },
     { img: './img/main-product03.jpg', name: 'Beosound A5', price: 'From ₩2,090,000' },
@@ -145,11 +144,10 @@ document.addEventListener('DOMContentLoaded', function () {
     { img: './img/main-product08.jpg', name: 'Beosound A5', price: 'From ₩2,090,000' },
   ];
 
-  // 📌 Swiper-wrapper 요소 가져오기
+  // Swiper-wrapper 요소 가져오기
   const swiperWrapper = document.querySelector('.product-swiper-wrapper');
-  console.log(swiperWrapper);
 
-  // 📌 새 슬라이드 생성 & 추가
+  // 새 슬라이드 생성 & 추가
   products.forEach((product) => {
     const slide = document.createElement('div');
     slide.classList.add('swiper-slide', 'product-title');
@@ -163,7 +161,7 @@ document.addEventListener('DOMContentLoaded', function () {
     swiperWrapper.appendChild(slide);
   });
 
-  // 📌 Swiper 다시 업데이트 (새 슬라이드 적용)
+  // Swiper 다시 업데이트 (새 슬라이드 적용)
   requestAnimationFrame(() => {
     productSwiper.update();
   });
@@ -175,18 +173,18 @@ document.addEventListener('DOMContentLoaded', function () {
   gsap.fromTo(
     '.pro-title h2',
     {
-      y: 100, // 아래에서 시작
+      y: 100,
       opacity: 0,
     },
     {
-      y: 0, // 제자리로
-      opacity: 1, // 완전히 보이게
+      y: 0,
+      opacity: 1,
       duration: 1,
-      stagger: 0.2, // 0.2초 간격으로 하나씩 등장
+      stagger: 0.2,
       ease: 'power2.out',
       scrollTrigger: {
         trigger: '.pro-title',
-        start: '+=180 center', // 화면의 80% 위치에서 시작
+        start: '+=180 center',
         end: '800% bottom',
         scrub: false,
         pin: '.professional',

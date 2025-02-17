@@ -3,7 +3,7 @@
 :root {
   --main-color: #ffc356;
   --title-color: #030303;
-  --text-color: #222;
+  --text-color: #333;
   --text-color-w: #f0f0f0;
 }
 html {
@@ -20,6 +20,9 @@ body {
   word-break: keep-all;
   /* text-transform: capitalize; // ttu, 앞 대문자//ttc 전부 대문자 */
   background-color: #fefefe;
+}
+.prevent {
+  overflow-y: hidden;
 }
 b {
   display: block;
@@ -60,6 +63,20 @@ a {
   /* background: rgba(110, 97, 255, 0.3); */
 }
 
+/* dim */
+.dim {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(2px);
+  z-index: 90;
+  opacity: 0;
+  visibility: hidden;
+}
+
 /* header */
 #header {
   position: fixed;
@@ -78,7 +95,7 @@ nav {
   align-items: center;
   height: 8rem;
   position: relative;
-  color: #fff;
+  color: var(--text-color-w);
 }
 nav h1 {
   margin-left: 5%;
@@ -132,12 +149,6 @@ nav h1 {
 .menu-icon span:last-child {
   margin-top: 1rem;
 }
-/* .menu-icon span:first-of-type {
-  top: 0;
-}
-.menu-icon span:last-of-type {
-  bottom: 0;
-} */
 .menu-icon.active span:first-of-type,
 .menu-icon .menu-icon_cheeckbox:checked + div span:first-of-type {
   transform: rotate(45deg);
@@ -154,7 +165,6 @@ nav h1 {
   width: 4rem;
   height: 4rem;
   background: url(../img/favicon.png) no-repeat 0 0;
-  mix-blend-mode: difference;
 }
 .submenu {
   display: flex;
@@ -167,28 +177,104 @@ nav h1 {
   padding: 0 1.2rem;
 }
 
-/* btn */
+/* menu btn */
+.menu-open {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  width: 40rem;
+  height: 100vh;
+  background-color: var(--text-color-w);
+  box-shadow: 5px 0 15px rgba(0, 0, 0, 0.2);
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out;
+  color: var(--title-color);
+  font-weight: 500;
+  letter-spacing: -0.5px;
+}
+.menu-open.active {
+  transform: translateX(0);
+}
+.menu-open::before {
+  content: '';
+  position: absolute;
+  top: 8%;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 1px;
+  background: #dedede;
+}
+.menu-list-products {
+  position: absolute;
+  top: 12%;
+  left: 0;
+  padding-left: 10rem;
+  width: auto;
+}
+.menu-list-products li {
+  margin-top: 2rem;
+}
+.menu-list-detail ul {
+  margin-top: 5rem;
+}
+.menu-list-detail ul li a,
+.menu-list-plus ul li a,
+.menu-list-products li a {
+  position: relative;
+
+  width: auto;
+}
+.menu-list-plus ul {
+  color: var(--text-color);
+  font-weight: 400;
+  font-size: 1.6rem;
+  margin-top: 25rem;
+}
+
+.menu-list-products li a::after,
+.menu-list-detail ul li a::after,
+.menu-list-plus ul li a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 0;
+  height: 1px;
+  background: var(--text-color);
+  transition: width 0.2s ease-in-out;
+}
+
+.menu-list-products li a:hover::after,
+.menu-list-detail ul li a:hover::after,
+.menu-list-plus ul li a:hover::after {
+  width: 100%;
+}
 
 /* footer */
 #footer {
   background: var(--title-color);
   color: var(--text-color-w);
-  padding: 8rem 0 3rem;
+  padding: 10rem 0 20rem;
   font-family: 'Roboto';
   /* height: 72rem; */
 }
 .footer-wrap {
-  height: 58rem;
+  height: auto;
 }
 .footer-con {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
-  font-size: 2rem;
+  font-size: 1.8rem;
 }
 .footer-con li {
   display: block;
-  max-width: 40rem;
+  max-width: 38rem;
+}
+.footer-con li:not(:first-child) {
+  padding-left: 12rem;
 }
 
 .footer-con strong {
