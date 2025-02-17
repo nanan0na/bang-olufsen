@@ -181,6 +181,8 @@ h3 {
 .product h3 {
   text-align: center;
   font-size: 2.8rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
 }
 .product .more-icon {
   display: inline-block;
@@ -208,6 +210,9 @@ h3 {
 .product-slide {
   margin-top: 12rem;
   margin-left: 4%;
+}
+.swiper-slide.product-title {
+  cursor: grab;
 }
 .product-slide .swiper-wrapper {
   gap: 0 10px;
@@ -387,7 +392,7 @@ h3 {
 }
 .world-site {
   position: absolute;
-  bottom: 10%;
+  bottom: 12%;
   right: 10%;
   transform: rotate(-45deg);
   width: 20rem;
@@ -405,13 +410,14 @@ h3 {
 }
 .world img {
   width: 65rem;
-  height: 85rem;
-  object-fit: fill;
+  height: 80rem;
+  object-fit: cover;
   transition: opacity 0.5s ease-in-out;
   position: relative;
 }
+
 .world-title {
-  margin: 7rem 0 0 5rem;
+  margin: 3rem 0 0 5rem;
   color: var(--title-color);
   font-family: 'ROBOTO';
   letter-spacing: -0.5px;
@@ -434,13 +440,13 @@ h3 {
   margin-top: -2rem;
 }
 .world-title .world-desc {
-  margin-top: 15rem;
+  margin-top: 17rem;
   width: 50rem;
   color: #222;
   opacity: 70%;
 }
 .pagination {
-  margin-top: 20%;
+  margin-top: 18%;
   padding: 4rem;
   font-size: 2rem;
   font-weight: 600;

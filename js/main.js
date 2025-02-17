@@ -56,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function () {
   ScrollTrigger.create({
     trigger: video,
     start: '250% center',
-    end: '1000% bottom',
+    end: '300% bottom',
     onEnterBack: showCursor, // 다시 돌아올 때 커서
     onLeave: hideCursor, // 스크롤이 지나가면 숨김
     onEnter: () => {
@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', function () {
   ScrollTrigger.create({
     trigger: text,
     start: '250% center',
-    end: '1000% bottom',
+    end: '300% bottom',
     onEnter: () => {
       gsap.to(text, {
         marginTop: '12rem',
@@ -115,9 +115,12 @@ document.addEventListener('DOMContentLoaded', function () {
   // Swiper for Product Section (드래그 전용)
   const productSwiper = new Swiper('.product-slide', {
     slidesPerView: 'auto',
-    spaceBetween: 10,
+    spaceBetween: 0,
     freeMode: true,
     grabCursor: true,
+    simulateTouch: true,
+    touchRatio: 1,
+    resistanceRatio: 0,
     on: {
       progress: function (swiper) {
         const bar = document.querySelector('.progress-bar-fill');
@@ -129,16 +132,41 @@ document.addEventListener('DOMContentLoaded', function () {
   // 초기 프로그레스 바
   const bar = document.querySelector('.progress-bar-fill');
   bar.style.width = '10%';
+  //
 
-  // `.product` 영역 안에서만 커서 크기 조절
-  // const productSection = document.querySelector('.product-slide');
-  // productSection.addEventListener('mouseenter', function () {
-  //   cursor.css({
-  //     transform: 'scale(1)', // 원래 크기
-  //     opacity: '1', // 완전히 보이게
-  //   });
-  //   $('body').css('cursor', 'none');
-  // });
+  // 📌 추가할 제품 목록 (02번부터 추가)
+  const products = [
+    { img: './img/main-product02.jpg', name: 'Beosound A5', price: 'From ₩2,090,000' },
+    { img: './img/main-product03.jpg', name: 'Beosound A5', price: 'From ₩2,090,000' },
+    { img: './img/main-product04.jpg', name: 'Beosound A5', price: 'From ₩2,090,000' },
+    { img: './img/main-product05.jpg', name: 'Beosound A5', price: 'From ₩2,090,000' },
+    { img: './img/main-product06.jpg', name: 'Beosound A5', price: 'From ₩2,090,000' },
+    { img: './img/main-product07.jpg', name: 'Beosound A5', price: 'From ₩2,090,000' },
+    { img: './img/main-product08.jpg', name: 'Beosound A5', price: 'From ₩2,090,000' },
+  ];
+
+  // 📌 Swiper-wrapper 요소 가져오기
+  const swiperWrapper = document.querySelector('.product-swiper-wrapper');
+  console.log(swiperWrapper);
+
+  // 📌 새 슬라이드 생성 & 추가
+  products.forEach((product) => {
+    const slide = document.createElement('div');
+    slide.classList.add('swiper-slide', 'product-title');
+    slide.innerHTML = `
+  <img src="${product.img}" alt="" />
+  <div class="products-text">
+    <strong>${product.name}</strong>
+    <p>${product.price}</p>
+  </div>
+`;
+    swiperWrapper.appendChild(slide);
+  });
+
+  // 📌 Swiper 다시 업데이트 (새 슬라이드 적용)
+  requestAnimationFrame(() => {
+    productSwiper.update();
+  });
 
   // professional
   window.addEventListener('load', function () {
@@ -242,16 +270,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // 기존 이미지 위로 사라지게 (y축 이동 + 투명도 감소)
         gsap.to(imgEl, {
-          y: -30,
+          y: -20,
           opacity: 0,
-          duration: 0.5,
+          duration: 0.3,
           ease: 'power2.out',
           onComplete: () => {
             imgEl.src = slides[index].img; // 이미지 변경
             gsap.set(imgEl, { y: 30, opacity: 0 }); // 새로운 이미지를 아래에서 대기 상태로 설정
 
             // 새 이미지 아래에서 위로 올라오면서 나타나게
-            gsap.to(imgEl, { y: 0, opacity: 1, duration: 0.5, ease: 'power2.out' });
+            gsap.to(imgEl, { y: 0, opacity: 1, duration: 0.5, ease: 'power1.in' });
           },
         });
 
@@ -267,7 +295,7 @@ document.addEventListener('DOMContentLoaded', function () {
             pageCurrent.textContent = `0${index + 1}`;
 
             gsap.set([titleEl, subtitleEl, descEl], { y: 20, opacity: 0 }); // 새로운 텍스트를 아래에서 대기 상태로 설정
-            gsap.to([titleEl, subtitleEl, descEl], { opacity: 1, y: 0, duration: 0.3, ease: 'power2.out' });
+            gsap.to([titleEl, subtitleEl, descEl], { opacity: 1, y: 0, duration: 0.5, ease: 'power1.in' });
           },
         });
       }
@@ -282,7 +310,7 @@ document.addEventListener('DOMContentLoaded', function () {
   ScrollTrigger.create({
     trigger: storeSection,
     start: 'top top',
-    end: '+=200%', // 스크롤 길이 조정
+    end: '+=150%', // 스크롤 길이 조정
     pin: true,
     scrub: 1,
     onEnter: showCursor, // store 섹션 진입 시 커서 활성화

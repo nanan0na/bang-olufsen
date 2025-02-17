@@ -19,6 +19,7 @@ body {
   overflow-x: hidden;
   word-break: keep-all;
   /* text-transform: capitalize; // ttu, 앞 대문자//ttc 전부 대문자 */
+  background-color: #fefefe;
 }
 b {
   display: block;
@@ -65,9 +66,9 @@ a {
   top: 0;
   left: 0;
   width: 100%;
-
+  mix-blend-mode: difference;
   /* background: rgba(255, 43, 43, 0.2); */
-  z-index: 100;
+  z-index: 900;
   transition: 0.3s;
   font-weight: 300;
 }
@@ -78,7 +79,6 @@ nav {
   height: 8rem;
   position: relative;
   color: #fff;
-  filter: invert(0);
 }
 nav h1 {
   margin-left: 5%;
@@ -154,6 +154,7 @@ nav h1 {
   width: 4rem;
   height: 4rem;
   background: url(../img/favicon.png) no-repeat 0 0;
+  mix-blend-mode: difference;
 }
 .submenu {
   display: flex;
@@ -181,15 +182,15 @@ nav h1 {
 }
 .footer-con {
   display: flex;
-  font-size: 2.2rem;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 2rem;
 }
 .footer-con li {
   display: block;
-  width: 42rem;
+  max-width: 40rem;
 }
-.footer-con li:not(:first-child) {
-  margin-left: 22rem;
-}
+
 .footer-con strong {
   font-weight: 600;
 }
@@ -199,7 +200,7 @@ nav h1 {
   font-weight: 400;
 }
 .logo-footer {
-  margin-top: 5rem;
+  margin-top: 8rem;
   position: relative;
 }
 .logo-footer a {
