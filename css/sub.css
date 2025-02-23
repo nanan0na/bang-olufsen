@@ -22,11 +22,12 @@
 }
 .product-title {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   margin-top: 8rem;
 }
 .product-title h3 {
   font-size: 13rem;
+
   display: inline-block;
   letter-spacing: -5px;
   position: relative;
@@ -43,7 +44,7 @@
   letter-spacing: 0px;
 }
 .product-title p {
-  width: 110rem;
+  width: 50%;
   display: block;
   margin-top: 5rem;
   margin-left: 20rem;
@@ -115,9 +116,6 @@
 }
 
 /* grid */
-/* .talk:nth-child(n + 5) {
-  display: none;
-} */
 .product-wrap {
   width: 100%;
   height: auto;
@@ -126,10 +124,13 @@
 
 .product-list {
   display: grid;
-  height: auto;
-  gap: 8px;
+  height: 76.7rem;
+  column-gap: 6px;
   grid-template-columns: 20% 20% 20% 20% 20%;
-  grid-template-rows: 66% 34%;
+  grid-template-rows: 55% 45%;
+}
+.product-list:not(:first-child) {
+  margin-top: 8rem;
 }
 
 .product-list li {
@@ -143,51 +144,145 @@
 }
 .product-list li em {
   position: absolute;
-  top: 0;
-  left: 0;
+  top: 2%;
+  left: 2%;
+  display: block;
+  background: var(--title-color);
+  color: var(--text-color-w);
+  border-radius: 3px;
+  padding: 5px 15px;
+  font-size: 1.7rem;
 }
-
-/* ✅ 이미지 높이를 조정 (80%) */
+.product-list li .img-wrap {
+  width: 100%;
+  height: 89%;
+  background: #cccccc28;
+}
 .product-list li img {
   width: 100%;
-  height: 90%; /* 부모(li) 안에서 80%만 차지 */
+  height: 100%;
   object-fit: cover;
   border-radius: 3px;
 }
 
-/* ✅ 텍스트 높이를 20%로 조정 */
 .product-text {
   width: 100%;
-  height: 10%; /* 부모(li)의 20% 차지 */
+
+  font-family: 'ROBOTO';
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
-  margin-top: 0.5rem; /* 이미지와 간격 */
-  background: #ff5;
+  /* background: #ff5; */
 }
 
 .product-text strong {
-  font-size: 2.3rem;
+  font-size: 2.2rem;
   font-weight: 500;
   color: var(--title-color);
 }
 
 .product-text p {
-  font-size: 1.8rem;
+  font-size: 1.7rem;
   color: #444;
 }
 
-/* ✅ 첫 번째 리스트의 그리드 조정 */
-.product-list:first-child li:nth-child(1) {
+/* 1 */
+.product-list:first-child li:nth-child(1),
+.product-list:nth-child(6) li:nth-child(1) {
   grid-column: 1/3;
   grid-row: 1/3;
 }
 
-.product-list:first-child li:nth-child(2) {
+.product-list:first-child li:nth-child(2),
+.product-list:nth-child(6) li:nth-child(2) {
   grid-column: 4/5;
 }
 
-.product-list:first-child li:nth-child(3) {
+.product-list:first-child li:nth-child(3),
+.product-list:nth-child(6) li:nth-child(3) {
   grid-column: 5/6;
+}
+
+/* 2 */
+.product-list:nth-child(2) li:nth-child(1),
+.product-list:nth-child(7) li:nth-child(1) {
+  grid-column: 2/3;
+}
+
+.product-list:nth-child(2) li:nth-child(2),
+.product-list:nth-child(7) li:nth-child(2) {
+  grid-column: 3/4;
+}
+
+.product-list:nth-child(2) li:nth-child(3),
+.product-list:nth-child(7) li:nth-child(3) {
+  grid-column: 4/6;
+  grid-row: 1/3;
+}
+
+/* 3 */
+.product-list:nth-child(3) li:nth-child(1) {
+  grid-column: 1/3;
+  grid-row: 1/3;
+}
+
+.product-list:nth-child(3) li:nth-child(2) {
+  grid-column: 3/4;
+}
+
+/* 4 */
+.product-list:nth-child(4) {
+  height: 42rem;
+  grid-template-rows: 100%;
+}
+.product-list:nth-child(4) li:nth-child(1) {
+  grid-column: 1/2;
+  grid-row: 1/2;
+}
+.compare {
+  border: 1px solid #000;
+  padding: 15rem 5rem;
+}
+.product-list .compare > img {
+  width: 50px;
+  height: 50px;
+}
+.product-list .compare > .product-text {
+  text-align: center;
+  margin-top: 3rem;
+}
+.product-list:nth-child(4) li:nth-child(2) {
+  grid-column: 3/4;
+}
+
+.product-list:nth-child(4) li:nth-child(3) {
+  grid-column: 4/5;
+}
+
+/* 5 */
+.product-list:nth-child(5) li:nth-child(1) {
+  grid-column: 2/3;
+}
+
+.product-list:nth-child(5) li:nth-child(2) {
+  grid-column: 4/6;
+  grid-row: 1/3;
+}
+
+.more-product {
+  display: block;
+  border: 1px solid #2b2b2b;
+  text-align: center;
+  margin: 5rem auto 20rem auto;
+  padding: 1rem 6rem;
+  font-size: 1.8rem;
+  border-radius: 2px;
+  background: none;
+  transition: 0.2s;
+}
+.more-product:hover {
+  background: var(--main-color);
+  border: 1px solid var(--main-color);
+  color: var(--text-color-w);
 }
