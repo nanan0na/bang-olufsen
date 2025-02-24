@@ -191,7 +191,7 @@ h3 {
 .product .more-icon {
   display: inline-block;
   margin-top: 6rem;
-  /* float: inline-end; */
+  float: inline-end;
   /* width: 6.2642%; */
   width: auto;
   text-align: center;
@@ -690,8 +690,7 @@ h3 {
   .professional .pro-wrap li {
     font-size: 1.6rem;
   }
-  .professional .pro-wrap li::after {
-  }
+
   .professional p {
     margin-top: 20rem;
     font-size: 1.7rem;
