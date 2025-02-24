@@ -135,13 +135,13 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // 추가할 제품 목록 (02번부터 추가)
   const products = [
-    { img: './img/main-product02.jpg', name: 'Beosound A5', price: 'From ₩2,090,000' },
-    { img: './img/main-product03.jpg', name: 'Beosound A5', price: 'From ₩2,090,000' },
-    { img: './img/main-product04.jpg', name: 'Beosound A5', price: 'From ₩2,090,000' },
-    { img: './img/main-product05.jpg', name: 'Beosound A5', price: 'From ₩2,090,000' },
-    { img: './img/main-product06.jpg', name: 'Beosound A5', price: 'From ₩2,090,000' },
-    { img: './img/main-product07.jpg', name: 'Beosound A5', price: 'From ₩2,090,000' },
-    { img: './img/main-product08.jpg', name: 'Beosound A5', price: 'From ₩2,090,000' },
+    { img: './img/subimg02.jpg', name: 'Beosound A9', price: 'From ₩5,000,000' },
+    { img: './img/subimg03.jpg', name: 'Beosound A9', price: 'From ₩5,000,000' },
+    { img: './img/subimg04.jpg', name: 'Beosound A5', price: 'From ₩2,090,000' },
+    { img: './img/subimg05.jpg', name: 'Beosound A1 2nd Gen', price: 'From ₩700,000' },
+    { img: './img/subimg06.jpg', name: 'Beosound A5', price: 'From ₩700,000' },
+    { img: './img/subimg07.jpg', name: 'Beosound 2 Ferrari Edition', price: 'From ₩7,199,000  ' },
+    { img: './img/subimg08.jpg', name: 'Beosound 2', price: 'From ₩2,090,000' },
   ];
 
   // Swiper-wrapper 요소 가져오기
@@ -216,6 +216,10 @@ document.addEventListener('DOMContentLoaded', function () {
     repeat: -1,
     yoyo: true,
   });
+
+  // 스크롤 시 .pro-wrap li 확장 효과
+
+  //
   ScrollTrigger.refresh();
 
   // world
@@ -274,9 +278,13 @@ document.addEventListener('DOMContentLoaded', function () {
           ease: 'power2.out',
           onComplete: () => {
             imgEl.src = slides[index].img; // 이미지 변경
-            gsap.set(imgEl, { y: 30, opacity: 0 }); // 새로운 이미지를 아래에서 대기 상태로 설정
-
-            // 새 이미지 아래에서 위로 올라오면서 나타나게
+            // 특정 이미지(main-world02.jpg)일 때 object-position 변경
+            if (slides[index].img.includes('main-world02.jpg')) {
+              imgEl.style.objectPosition = 'top'; // 상단 정렬
+            } else {
+              imgEl.style.objectPosition = 'center'; // 기본 정렬
+            }
+            gsap.set(imgEl, { y: 20, opacity: 0 });
             gsap.to(imgEl, { y: 0, opacity: 1, duration: 0.5, ease: 'power1.in' });
           },
         });
