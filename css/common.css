@@ -458,23 +458,9 @@ nav h1 {
   }
 }
 @media (max-width: 640px) {
-  #footer {
-    padding-bottom: 30%;
+  nav {
+    height: 6rem;
   }
-  .logo-footer a {
-    left: 60%;
-  }
-  .logo-footer a::before {
-    width: 10px;
-    height: 10px;
-  }
-}
-@media (max-width: 550px) {
-  .logo-footer-wrap {
-    font-size: 8rem;
-  }
-}
-@media (max-width: 425px) {
   .menu > p {
     opacity: 0;
   }
@@ -502,6 +488,23 @@ nav h1 {
     font-size: 1.4rem;
     font-weight: 400;
   }
+  #footer {
+    padding-bottom: 30%;
+  }
+  .logo-footer a {
+    left: 60%;
+  }
+  .logo-footer a::before {
+    width: 10px;
+    height: 10px;
+  }
+}
+@media (max-width: 550px) {
+  .logo-footer-wrap {
+    font-size: 8rem;
+  }
+}
+@media (max-width: 425px) {
   .logo-footer-wrap {
     font-size: 6rem;
     letter-spacing: -0.2rem;

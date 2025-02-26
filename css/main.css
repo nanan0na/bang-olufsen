@@ -890,6 +890,11 @@ h3 {
   }
   .our-story-text strong > span {
     font-size: 8rem;
+    line-height: 118%;
+  }
+  .our-story-text > p {
+    width: 100%;
+    font-size: 1.5rem;
   }
   .our-story-text strong.abs {
     margin-top: -0.5rem;
@@ -933,10 +938,7 @@ h3 {
   .our-story-text strong > span {
     font-size: 7rem;
   }
-  .our-story-text > p {
-    width: 100%;
-    font-size: 1.5rem;
-  }
+
   .our-story video {
     bottom: -40%;
   }
