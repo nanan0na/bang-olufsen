@@ -153,28 +153,6 @@ document.addEventListener('DOMContentLoaded', function () {
     } else if (windowInner <= 601 && productSwiper != undefined) {
       productSwiper.destroy();
       productSwiper = undefined;
-      applyGSAP(); // GSAP 애니메이션 실행
-    }
-  }
-  let gsapAnimationActive = false;
-
-  function applyGSAP() {
-    if (!gsapAnimationActive) {
-      gsapAnimationActive = true;
-
-      gsap.to('.product-title', {
-        opacity: 1,
-        y: -10,
-        duration: 0.5,
-        stagger: 0.2,
-        ease: 'power2.out',
-        scrollTrigger: {
-          trigger: '.product',
-          start: 'top top',
-          end: 'bottom 20%',
-          scrub: true,
-        },
-      });
     }
   }
 

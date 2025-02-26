@@ -842,7 +842,6 @@ h3 {
     justify-content: space-between;
     align-items: center;
     overflow: hidden;
-    opacity: 0.5;
   }
   .product-title img {
     width: 100%;
@@ -886,22 +885,37 @@ h3 {
 @media (max-width: 550px) {
   .our-story-text strong {
     font-size: 6rem;
+    margin-top: 1rem;
   }
   .our-story-text strong > span {
     font-size: 8rem;
   }
+  .our-story-text strong.abs {
+    margin-top: -0.5rem;
+  }
   h3 {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
   }
 }
-@media (max-width: 415px) {
+
+@media (max-width: 420px) {
   .visual-mobile-btn {
     display: block;
-    top: 63%;
-    left: 55%;
+    top: 52%;
+    left: 60%;
     opacity: 1;
     transform: scale(1);
     font-size: 1.5rem;
+  }
+  .visual-mobile-btn::before {
+    width: 12px;
+    height: 12px;
+  }
+  .visual-pagination {
+    top: 35%;
+  }
+  .visual-title {
+    bottom: 14%;
   }
   .visual-title h2 {
     font-size: 3.2rem;
@@ -916,7 +930,13 @@ h3 {
     font-size: 7rem;
   }
   .our-story-text > p {
-    width: 95%;
+    width: 100%;
+    font-size: 1.5rem;
+  }
+  .our-story video {
+    bottom: -40%;
+  }
+  .mobile-btn {
     font-size: 1.6rem;
   }
   .product {
@@ -931,11 +951,24 @@ h3 {
     width: 11px;
     height: 11px;
   }
+  .product h3 {
+    font-size: 1.8rem;
+  }
+  .product-title em {
+    font-size: 1.3rem;
+    padding: 3px 10px;
+  }
+  .product-title::before,
+  .products-text {
+    display: none;
+  }
   .product-slide {
     margin-top: 5rem;
   }
+
   .pro-title {
-    font-size: 3.4rem;
+    font-size: 4.2rem;
+    font-weight: 500;
   }
   .professional .inner > img {
     height: 60%;
@@ -945,38 +978,42 @@ h3 {
     width: 12px;
     height: 12px;
   }
-
   .professional .pro-wrap li:nth-child(2) {
     top: 0%;
   }
   .professional .pro-wrap li:last-child {
-    top: 20%;
+    top: 30%;
   }
   .professional p {
     font-size: 1.4rem;
+    margin-top: 30rem;
   }
   .world-content {
     margin-top: -12rem;
   }
   .world img {
-    height: 40rem;
+    height: 35rem;
   }
   .pagination {
     left: -2%;
+    top: -3%;
+    font-size: 1.4rem;
   }
   .pagination .page-current::after {
     margin: 0;
+    width: 12px;
   }
   .world-title {
     margin-top: 2rem;
   }
   .world-title .world-heading {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     font-weight: 400;
   }
   .world-title .world-subtitle {
-    font-size: 3.2rem;
+    font-size: 3rem;
     margin-top: 0.5rem;
+    font-weight: 600;
     line-height: 1.2;
   }
   .world-title .world-subtitle b {
@@ -984,16 +1021,17 @@ h3 {
     margin: 0;
   }
   .world-title .world-desc {
-    font-size: 1.6rem;
-    margin-top: 5rem;
+    font-size: 1.4rem;
+    margin-top: 4.5rem;
   }
   .world-site {
     height: 13%;
-    top: 85%;
+    top: 82%;
     background-size: 2.4rem;
   }
   .store h2 {
     font-size: 3.2rem;
+    padding-top: 15rem;
   }
   .store p {
     font-size: 1.7rem;
