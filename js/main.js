@@ -15,9 +15,9 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   function updatePagination(index) {
-    let totalSlides = 3; // 총 슬라이드 개수
-    let currentIndex = (index % totalSlides) + 1; // 1부터 시작하도록 설정
-    // 첫 번째 span의 숫자를 현재 슬라이드 번호로 변경
+    let totalSlides = 3;
+    let currentIndex = (index % totalSlides) + 1;
+
     let firstSpan = document.querySelector('.visual-pagination span:first-child');
     if (firstSpan) {
       firstSpan.textContent = `0${currentIndex}`;
@@ -29,11 +29,10 @@ document.addEventListener('DOMContentLoaded', function () {
   gsap.registerPlugin(ScrollTrigger);
   const tl = gsap.timeline();
   const video = document.querySelector('.our-story video');
-  const text = document.querySelector('.our-story-text');
+  const text = document.querySelector('.our-story-text, .mobile-btn');
   const cursor = document.querySelectorAll('.sec-cursor'); // 커서 요소
   const section = document.querySelector('.our-story');
 
-  // 커서 보이기 (공통 함수)
   function showCursor() {
     gsap.to(cursor, {
       opacity: 1,
@@ -42,8 +41,6 @@ document.addEventListener('DOMContentLoaded', function () {
       ease: 'power1.out',
     });
   }
-
-  // 커서 숨기기 (공통 함수)
   function hideCursor() {
     gsap.to(cursor, {
       opacity: 0,
@@ -57,8 +54,8 @@ document.addEventListener('DOMContentLoaded', function () {
     trigger: video,
     start: '250% center',
     end: '300% bottom',
-    onEnterBack: showCursor, // 다시 돌아올 때 커서
-    onLeave: hideCursor, // 스크롤이 지나가면 숨김
+    onEnterBack: showCursor,
+    onLeave: hideCursor,
     onEnter: () => {
       showCursor(),
         gsap.to(video, {
@@ -87,12 +84,10 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     },
   });
-
-  // 마우스가 our-story 영역에 들어오면 커서 활성화
   section.addEventListener('mouseenter', showCursor);
   section.addEventListener('mouseleave', hideCursor);
 
-  // 마우스 이동 시 커서 따라다니게 설정
+  // 마우스 커서
   document.addEventListener('mousemove', (e) => {
     gsap.to(cursor, {
       x: e.clientX,
@@ -112,28 +107,84 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   // Swiper for Product Section (드래그 전용)
-  const productSwiper = new Swiper('.product-slide', {
-    slidesPerView: 'auto',
-    spaceBetween: 0,
-    freeMode: true,
-    grabCursor: true,
-    simulateTouch: true,
-    touchRatio: 1,
-    resistanceRatio: 0,
-    on: {
-      progress: function (swiper) {
-        const bar = document.querySelector('.progress-bar-fill');
-        const progressValue = Math.max(swiper.progress * 100, 10);
-        bar.style.width = `${progressValue}%`;
-      },
-    },
-  });
+  // const productSwiper = new Swiper('.product-slide', {
+  //   slidesPerView: 'auto',
+  //   spaceBetween: 0,
+  //   freeMode: true,
+  //   grabCursor: true,
+  //   simulateTouch: true,
+  //   touchRatio: 1,
+  //   resistanceRatio: 0,
+  //   on: {
+  //     progress: function (swiper) {
+  //       const bar = document.querySelector('.progress-bar-fill');
+  //       const progressValue = Math.max(swiper.progress * 100, 10);
+  //       bar.style.width = `${progressValue}%`;
+  //     },
+  //   },
+  // });
+
+  let productSwiper;
+
+  function initSwiper() {
+    const windowInner = window.innerWidth; // 현재 화면 너비 가져오기
+
+    if (windowInner > 601 && productSwiper == undefined) {
+      productSwiper = new Swiper('.product-slide', {
+        slidesPerView: 'auto',
+        spaceBetween: 0,
+        freeMode: true,
+        grabCursor: true,
+        simulateTouch: true,
+        touchRatio: 1,
+        resistanceRatio: 0,
+        on: {
+          progress: function (swiper) {
+            const bar = document.querySelector('.progress-bar-fill');
+            const progressValue = Math.max(swiper.progress * 100, 10);
+            bar.style.width = `${progressValue}%`;
+          },
+        },
+      });
+
+      // 프로그레스 바 보이게
+      document.querySelector('.progress-bar').style.opacity = '1';
+      document.querySelector('.progress-bar').style.visibility = 'visible';
+    } else if (windowInner <= 601 && productSwiper != undefined) {
+      productSwiper.destroy();
+      productSwiper = undefined;
+      applyGSAP(); // GSAP 애니메이션 실행
+    }
+  }
+  let gsapAnimationActive = false;
+
+  function applyGSAP() {
+    if (!gsapAnimationActive) {
+      gsapAnimationActive = true;
+
+      gsap.to('.product-title', {
+        opacity: 1,
+        y: -10,
+        duration: 0.5,
+        stagger: 0.2,
+        ease: 'power2.out',
+        scrollTrigger: {
+          trigger: '.product',
+          start: 'top top',
+          end: 'bottom 20%',
+          scrub: true,
+        },
+      });
+    }
+  }
+
+  // 반응형 변경 감지
+  window.addEventListener('resize', initSwiper);
+
   // 초기 프로그레스 바
   const bar = document.querySelector('.progress-bar-fill');
-  bar.style.width = '10%';
-  //
+  bar.style.width = '12%';
 
-  // 추가할 제품 목록 (02번부터 추가)
   const products = [
     { img: './img/subimg02.jpg', name: 'Beosound A9', price: 'From ₩5,000,000' },
     { img: './img/subimg03.jpg', name: 'Beosound A9', price: 'From ₩5,000,000' },
@@ -142,30 +193,31 @@ document.addEventListener('DOMContentLoaded', function () {
     { img: './img/subimg06.jpg', name: 'Beosound A5', price: 'From ₩700,000' },
     { img: './img/subimg07.jpg', name: 'Beosound 2 Ferrari Edition', price: 'From ₩7,199,000  ' },
     { img: './img/subimg08.jpg', name: 'Beosound 2', price: 'From ₩2,090,000' },
+    { img: './img/subimg09.jpg', name: 'Beosound 2', price: 'From ₩2,090,000' },
   ];
 
-  // Swiper-wrapper 요소 가져오기
   const swiperWrapper = document.querySelector('.product-swiper-wrapper');
 
-  // 새 슬라이드 생성 & 추가
   products.forEach((product) => {
     const slide = document.createElement('div');
     slide.classList.add('swiper-slide', 'product-title');
     slide.innerHTML = `
-  <img src="${product.img}" alt="" />
-  <div class="products-text">
-    <strong>${product.name}</strong>
-    <p>${product.price}</p>
-  </div>
-`;
+    <img src="${product.img}" alt="" />
+    <div class="products-text">
+      <strong>${product.name}</strong>
+      <p>${product.price}</p>
+    </div>
+  `;
     swiperWrapper.appendChild(slide);
   });
-
-  // Swiper 다시 업데이트 (새 슬라이드 적용)
+  initSwiper();
   requestAnimationFrame(() => {
-    productSwiper.update();
+    if (productSwiper) {
+      productSwiper.update();
+    } else {
+      console.warn('productSwiper가 아직 초기화되지 않음!');
+    }
   });
-
   // professional
   window.addEventListener('load', function () {
     ScrollTrigger.refresh();
@@ -192,7 +244,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   );
 
-  ScrollTrigger.refresh(); // 스크롤 감지 다시 초기화
+  ScrollTrigger.refresh();
   gsap.to('.professional .inner > img, .professional .pro-wrap li', {
     opacity: 1,
     y: 30,
@@ -207,8 +259,6 @@ document.addEventListener('DOMContentLoaded', function () {
       scrub: false,
     },
   });
-
-  // 🟢 미세한 떠다니는 효과 추가
   gsap.to('.professional .inner > img', {
     y: 15,
     duration: 1.5,
@@ -217,9 +267,6 @@ document.addEventListener('DOMContentLoaded', function () {
     yoyo: true,
   });
 
-  // 스크롤 시 .pro-wrap li 확장 효과
-
-  //
   ScrollTrigger.refresh();
 
   // world
@@ -260,8 +307,8 @@ document.addEventListener('DOMContentLoaded', function () {
   ScrollTrigger.create({
     trigger: '.world',
     start: 'top top',
-    end: '+=300%', // 스크롤 길이
-    pin: true, // 화면 고정
+    end: '+=300%',
+    pin: true,
     scrub: 1,
     onUpdate: (self) => {
       let progress = self.progress * (slides.length - 1);
@@ -270,26 +317,25 @@ document.addEventListener('DOMContentLoaded', function () {
       if (imgEl.dataset.currentIndex != index) {
         imgEl.dataset.currentIndex = index;
 
-        // 기존 이미지 위로 사라지게 (y축 이동 + 투명도 감소)
+        // 기존 이미지 위로 사라지게
         gsap.to(imgEl, {
           y: -20,
           opacity: 0,
           duration: 0.3,
           ease: 'power2.out',
           onComplete: () => {
-            imgEl.src = slides[index].img; // 이미지 변경
-            // 특정 이미지(main-world02.jpg)일 때 object-position 변경
+            imgEl.src = slides[index].img;
             if (slides[index].img.includes('main-world02.jpg')) {
-              imgEl.style.objectPosition = 'top'; // 상단 정렬
+              imgEl.style.objectPosition = 'top'; // 상단
             } else {
-              imgEl.style.objectPosition = 'center'; // 기본 정렬
+              imgEl.style.objectPosition = 'center';
             }
             gsap.set(imgEl, { y: 20, opacity: 0 });
             gsap.to(imgEl, { y: 0, opacity: 1, duration: 0.5, ease: 'power1.in' });
           },
         });
 
-        // 텍스트 변경 (자연스럽게 페이드 효과 추가)
+        // 텍스트 변경 페이드
         gsap.to([titleEl, subtitleEl, descEl], {
           opacity: 0,
           y: -20,
@@ -310,21 +356,18 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // store
   const storeSection = document.querySelector('.store');
-  const storeText = storeSection.querySelectorAll('.inner h2, .inner p'); // 텍스트 요소
+  const storeText = storeSection.querySelectorAll('.inner h2, .inner p, .store .mobile-btn'); // 텍스트 요소
 
-  // 🟢 **1. store 섹션 일정 구간 스크롤 고정**
   ScrollTrigger.create({
     trigger: storeSection,
     start: 'top top',
-    end: '+=150%', // 스크롤 길이 조정
+    end: '+=150%',
     pin: true,
     scrub: 1,
-    onEnter: showCursor, // store 섹션 진입 시 커서 활성화
-    onEnterBack: showCursor, // 다시 돌아올 때 커서 활성화
-    onLeave: hideCursor, // store 섹션을 지나가면 커서 숨김
+    onEnter: showCursor,
+    onEnterBack: showCursor,
+    onLeave: hideCursor,
   });
-
-  // 🟢 **2. 텍스트 stragger 애니메이션 (위에서 아래로 나타남)**
   gsap.fromTo(
     storeText,
     { opacity: 0, y: 50 },
@@ -332,7 +375,7 @@ document.addEventListener('DOMContentLoaded', function () {
       opacity: 1,
       y: 0,
       duration: 0.5,
-      stagger: 1,
+      stagger: 0.5,
       ease: 'power2.out',
       scrollTrigger: {
         trigger: storeSection,
@@ -342,8 +385,6 @@ document.addEventListener('DOMContentLoaded', function () {
       },
     }
   );
-
-  // 🟢 **마우스가 store 영역에 들어오면 커서 활성화**
   storeSection.addEventListener('mouseenter', showCursor);
   storeSection.addEventListener('mouseleave', hideCursor);
 });

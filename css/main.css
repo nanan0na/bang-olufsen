@@ -1,5 +1,6 @@
 @charset 'utf-8';
 @import url('https://fonts.googleapis.com/css2?family=Pinyon+Script&display=swap');
+.visual-mobile-btn,
 .cursor {
   font-size: 2rem;
   font-weight: 300;
@@ -7,8 +8,6 @@
   top: 0;
   left: 0;
   z-index: 9999;
-  width: 13rem;
-  height: 4.6rem;
   color: var(--title-color);
   background-color: var(--main-color);
   border-radius: 22px;
@@ -19,6 +18,8 @@
   opacity: 0; /* 기본적으로 투명 */
   transition: 0.15s ease-out, opacity 0.3s ease-out;
 }
+
+.visual-mobile-btn::before,
 .cursor::before {
   content: '';
   position: absolute;
@@ -30,7 +31,9 @@
   border-radius: 50%;
   background-color: var(--main-color);
 }
-
+.visual-mobile-btn {
+  display: none;
+}
 .sec-cursor {
   display: flex;
   position: absolute;
@@ -171,7 +174,7 @@ h3 {
   z-index: -1;
   bottom: -50%;
   right: 5%;
-  object-fit: fill;
+  object-fit: cover;
 }
 .mobile-btn {
   display: none;
@@ -179,7 +182,7 @@ h3 {
 
 /* product */
 .product {
-  margin-top: 26.1%;
+  padding-top: 80rem;
   position: relative;
 }
 .product h3 {
@@ -188,7 +191,8 @@ h3 {
   font-weight: 700;
   letter-spacing: -0.5px;
 }
-.product .more-icon {
+.product .more-icon,
+.btn-more-icon {
   display: inline-block;
   margin-top: 6rem;
   float: inline-end;
@@ -198,11 +202,12 @@ h3 {
   vertical-align: middle;
   padding: 1rem 0;
 }
-.more-icon::after {
+.more-icon::after,
+.btn-more-icon::after {
   content: '';
   display: inline-block;
   margin-left: 1rem;
-  background-image: url(../img/plusicon.svg);
+  background: url(../img/plusicon.svg) no-repeat 0 0 / contain;
   width: 1.4rem;
   height: 1.4rem;
 }
@@ -213,6 +218,10 @@ h3 {
 .product-slide {
   margin-top: 10.433%;
   margin-left: 4%;
+  display: block;
+}
+.product-list {
+  display: flex;
 }
 .swiper-slide.product-title {
   cursor: grab;
@@ -288,6 +297,9 @@ h3 {
   width: 0%;
   background: #000; /* 검은색 진행 바 */
   transition: width 0.1s ease-out;
+}
+.btn-more-icon {
+  display: none;
 }
 
 /* professional */
@@ -403,8 +415,6 @@ h3 {
   bottom: 12%;
   right: 10%;
   transform: rotate(-45deg);
-  /* width: 20rem; */
-  /* height: 20rem; */
   height: 22.67%;
   aspect-ratio: 1/1;
   border-radius: 50%;
@@ -555,9 +565,6 @@ h3 {
 }
 
 @media (max-width: 1380px) {
-  .product {
-    margin-top: 32%;
-  }
   .pro-title {
     font-size: 9rem;
   }
@@ -644,7 +651,7 @@ h3 {
     align-items: center;
     margin-top: 3rem;
     cursor: pointer;
-    text-shadow: 1px 1px 2px #565656;
+    /* text-shadow: 1px 1px 2px #565656; */
     color: var(--text-color-w);
     background: none;
     font-family: 'ROBOTO';
@@ -660,9 +667,7 @@ h3 {
     margin-left: 1.5rem;
     transition: 0.3s;
   }
-  .product {
-    margin-top: 50%;
-  }
+
   .product h3 {
     font-size: 2.4rem;
   }
@@ -698,14 +703,13 @@ h3 {
 
   /*  */
   .world {
-    /* padding-top: 10rem; */
-    padding-top: 12rem;
+    padding-top: 6rem;
   }
   .world-content {
     display: block;
   }
   .world img {
-    width: 100%;
+    width: 60%;
     height: 50rem;
     object-position: center;
   }
@@ -715,7 +719,7 @@ h3 {
   .pagination {
     position: absolute;
     display: flex;
-    top: -10%;
+    top: -7%;
     left: 0;
   }
   .pagination .page-current {
@@ -726,20 +730,28 @@ h3 {
     transform: rotate(-65deg);
   }
   .world-site {
-    bottom: -20%;
+    top: 45%;
     z-index: 10;
     right: 5%;
+    height: 18%;
   }
   .world-title .world-subtitle {
-    font-size: 6.5rem;
+    font-size: 5.8rem;
     line-height: 120%;
   }
   .world-title .world-subtitle b {
-    margin: 0;
-    float: inline-start;
+    margin: -1rem 0 0 0;
+    float: inline-end;
   }
   .world-title .world-desc {
-    margin-top: 12rem;
+    margin-top: 8rem;
+    width: 100%;
+    display: -webkit-box;
+    word-wrap: break-word;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    overflow: hidden;
   }
   .store {
     background-position-x: 50%;
@@ -748,9 +760,247 @@ h3 {
     display: none;
   }
   .store h2 {
-    padding-top: 12rem;
+    padding-top: 20rem;
   }
   .store p {
     width: 70%;
+  }
+}
+@media (max-width: 601px) {
+  .our-story {
+    padding-top: 15rem;
+  }
+  .our-story video {
+    width: 45%;
+  }
+  .abs {
+    top: 25%;
+  }
+  .our-story-text > p {
+    margin-top: 10rem;
+  }
+
+  .progress-bar {
+    bottom: -2%;
+  }
+  .professional .inner > img {
+    height: 80%;
+  }
+  .professional .pro-wrap li:first-child {
+    left: 30%;
+  }
+  .professional .pro-wrap li:nth-child(2) {
+    left: 70%;
+  }
+  .professional .pro-wrap li:last-child {
+    left: 25%;
+    top: 45%;
+  }
+
+  .world-content {
+    margin-top: -26rem;
+  }
+  .world img {
+    width: 100%;
+    height: 55rem;
+  }
+  .world-title {
+    margin: 3rem 0 0;
+  }
+  .pagination {
+    top: -5%;
+  }
+  .world-site {
+    top: 78%;
+  }
+  .world-title .world-subtitle {
+    font-size: 5.4rem;
+    line-height: 130%;
+  }
+
+  /*  */
+  .product {
+    padding-top: 85rem;
+  }
+  .product-slide {
+    margin-top: 10rem;
+    width: 92.5%;
+    height: auto;
+  }
+  .product .product-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 5px;
+    height: auto;
+    gap: 5px;
+  }
+  .product .product-title {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden;
+    opacity: 0.5;
+  }
+  .product-title img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .progress-bar {
+    display: none;
+  }
+  .product .more-icon {
+    display: none;
+  }
+  .btn-more-icon {
+    display: inline-block;
+    padding-right: 20.5%;
+    margin-top: -26%;
+  }
+}
+@media (max-width: 571px) {
+  .pro-title {
+    font-size: 5rem;
+  }
+  .professional .inner > img {
+    height: 70%;
+  }
+  .professional .pro-wrap li {
+    width: 15px;
+    height: 15px;
+  }
+  .professional .pro-wrap li:last-child {
+    left: 25%;
+    top: 40%;
+  }
+  .professional p {
+    margin-top: 22rem;
+  }
+  .professional p > b {
+    display: inline-flex;
+  }
+}
+@media (max-width: 550px) {
+  .our-story-text strong {
+    font-size: 6rem;
+  }
+  .our-story-text strong > span {
+    font-size: 8rem;
+  }
+  h3 {
+    font-size: 1.8rem;
+  }
+}
+@media (max-width: 415px) {
+  .visual-mobile-btn {
+    display: block;
+    top: 63%;
+    left: 55%;
+    opacity: 1;
+    transform: scale(1);
+    font-size: 1.5rem;
+  }
+  .visual-title h2 {
+    font-size: 3.2rem;
+  }
+  .visual-title p {
+    font-size: 1.4rem;
+  }
+  .our-story-text strong {
+    font-size: 5.4rem;
+  }
+  .our-story-text strong > span {
+    font-size: 7rem;
+  }
+  .our-story-text > p {
+    width: 95%;
+    font-size: 1.6rem;
+  }
+  .product {
+    padding-top: 60rem;
+  }
+  .btn-more-icon {
+    padding-right: 19%;
+    margin-top: -28%;
+    font-size: 1.6rem;
+  }
+  .btn-more-icon::after {
+    width: 11px;
+    height: 11px;
+  }
+  .product-slide {
+    margin-top: 5rem;
+  }
+  .pro-title {
+    font-size: 3.4rem;
+  }
+  .professional .inner > img {
+    height: 60%;
+    top: 10%;
+  }
+  .professional .pro-wrap li {
+    width: 12px;
+    height: 12px;
+  }
+
+  .professional .pro-wrap li:nth-child(2) {
+    top: 0%;
+  }
+  .professional .pro-wrap li:last-child {
+    top: 20%;
+  }
+  .professional p {
+    font-size: 1.4rem;
+  }
+  .world-content {
+    margin-top: -12rem;
+  }
+  .world img {
+    height: 40rem;
+  }
+  .pagination {
+    left: -2%;
+  }
+  .pagination .page-current::after {
+    margin: 0;
+  }
+  .world-title {
+    margin-top: 2rem;
+  }
+  .world-title .world-heading {
+    font-size: 1.6rem;
+    font-weight: 400;
+  }
+  .world-title .world-subtitle {
+    font-size: 3.2rem;
+    margin-top: 0.5rem;
+    line-height: 1.2;
+  }
+  .world-title .world-subtitle b {
+    float: inline-start;
+    margin: 0;
+  }
+  .world-title .world-desc {
+    font-size: 1.6rem;
+    margin-top: 5rem;
+  }
+  .world-site {
+    height: 13%;
+    top: 85%;
+    background-size: 2.4rem;
+  }
+  .store h2 {
+    font-size: 3.2rem;
+  }
+  .store p {
+    font-size: 1.7rem;
+    width: 95%;
+  }
+  .mobile-btn {
+    margin-top: 4rem;
   }
 }
