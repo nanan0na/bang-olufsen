@@ -1,5 +1,13 @@
 @charset 'utf-8';
 @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@font-face {
+  font-family: 'Helvetica 73 Bold Extended';
+  src: url('https://db.onlinewebfonts.com/t/b71c831cd232effde30ce1bec5e171d5.woff2') format('woff2'),
+    url('https://db.onlinewebfonts.com/t/b71c831cd232effde30ce1bec5e171d5.woff') format('woff'),
+    url('https://db.onlinewebfonts.com/t/b71c831cd232effde30ce1bec5e171d5.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
 :root {
   --main-color: #ffc356;
   --title-color: #030303;
@@ -407,7 +415,7 @@ nav h1 {
 /* tablet */
 @media (max-width: 834px) {
   .menu-open.active {
-    width: 40%;
+    width: 45%;
   }
   .menu-list-products > li {
     font-size: 1.8rem;
@@ -451,7 +459,7 @@ nav h1 {
 }
 @media (max-width: 640px) {
   #footer {
-    padding-bottom: 40%;
+    padding-bottom: 30%;
   }
   .logo-footer a {
     left: 60%;
@@ -472,37 +480,47 @@ nav h1 {
   }
   .submenu > li {
     text-indent: -9999px;
-    width: 28px;
-    height: 28px;
+    width: 26px;
+    height: 26px;
   }
   .submenu > li:first-child {
     background: url(../img/cart-outline.png) no-repeat 0 0 / contain;
   }
   .submenu > li:last-child {
     background: url(../img/user-outline.png) no-repeat 0 0 / contain;
-    margin-left: 1.5rem;
+    margin-left: 1.2rem;
   }
-  nav h1 {
-    margin-right: 4rem;
+  .logo a {
+    width: 26px;
+    height: 26px;
+    margin-right: 3.5rem;
   }
   .menu-open.active {
     width: 60%;
   }
   .menu-list-products > li {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     font-weight: 400;
   }
   .logo-footer-wrap {
-    font-size: 6.4rem;
+    font-size: 6rem;
+    letter-spacing: -0.2rem;
   }
   .footer-wrap > p {
     margin-top: 8rem;
   }
   .logo-footer a {
-    padding: 1rem 1.5rem;
-    font-weight: 300;
+    padding: 0.8rem 1.2rem;
+    font-weight: 400;
+    left: 55%;
+    top: -19%;
   }
   .footer-con li:not(:first-child) {
     margin-top: 3rem;
+  }
+}
+@media (max-width: 365px) {
+  .logo-footer a {
+    left: 62%;
   }
 }
