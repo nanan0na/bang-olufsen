@@ -125,6 +125,9 @@ document.addEventListener('DOMContentLoaded', function () {
   // });
 
   let productSwiper;
+  // 초기 프로그레스 바
+  const bar = document.querySelector('.progress-bar-fill');
+  bar.style.width = '12%';
 
   function initSwiper() {
     const windowInner = window.innerWidth; // 현재 화면 너비 가져오기
@@ -159,10 +162,6 @@ document.addEventListener('DOMContentLoaded', function () {
   // 반응형 변경 감지
   window.addEventListener('resize', initSwiper);
 
-  // 초기 프로그레스 바
-  const bar = document.querySelector('.progress-bar-fill');
-  bar.style.width = '12%';
-
   const products = [
     { img: './img/subimg02.jpg', name: 'Beosound A9', price: 'From ₩5,000,000' },
     { img: './img/subimg03.jpg', name: 'Beosound A9', price: 'From ₩5,000,000' },
@@ -190,11 +189,7 @@ document.addEventListener('DOMContentLoaded', function () {
   });
   initSwiper();
   requestAnimationFrame(() => {
-    if (productSwiper) {
-      productSwiper.update();
-    } else {
-      console.warn('productSwiper가 아직 초기화되지 않음!');
-    }
+    productSwiper.update();
   });
   // professional
   window.addEventListener('load', function () {

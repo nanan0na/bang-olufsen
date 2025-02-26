@@ -7,7 +7,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  z-index: 9999;
+  z-index: 80;
   color: var(--title-color);
   background-color: var(--main-color);
   border-radius: 22px;
@@ -825,6 +825,7 @@ h3 {
     margin-top: 10rem;
     width: 92.5%;
     height: auto;
+    opacity: 1;
   }
   .product .product-list {
     display: grid;
@@ -906,6 +907,9 @@ h3 {
     opacity: 1;
     transform: scale(1);
     font-size: 1.5rem;
+  }
+  .cursor {
+    display: none;
   }
   .visual-mobile-btn::before {
     width: 12px;

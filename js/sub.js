@@ -13,6 +13,13 @@ $(document).ready(function () {
 
   $('.product-list:nth-child(n + 4)').hide();
 
+  $('.more-read-box').on('click', function () {
+    const $productTitle = $(this).closest('.product-title'); // 가장 가까운 .product-title 찾기
+    const isExpanded = $productTitle.toggleClass('expanded').hasClass('expanded'); // 클래스 토글 후 상태 확인
+
+    $(this).attr('data-expanded', isExpanded); // data 속성 업데이트
+  });
+
   const contentData = {
     'All Products': {
       title: 'All Products',

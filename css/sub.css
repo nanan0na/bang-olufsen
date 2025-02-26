@@ -3,9 +3,15 @@
 #main {
   margin-top: 12rem;
 }
+.filter-list-wrapper {
+  overflow-x: auto; /* 가로 스크롤 가능하게 */
+  -webkit-overflow-scrolling: touch; /* iOS에서 부드러운 스크롤 */
+}
 
 .filter-list {
   display: flex;
+  flex-wrap: nowrap;
+  white-space: nowrap;
   justify-content: start;
   align-items: center;
   letter-spacing: -0.5px;
@@ -15,6 +21,7 @@
   font-weight: 400;
   padding-right: 2.847%;
   color: #0000004e;
+  flex-shrink: 0;
 }
 .filter-list li.active {
   color: var(--title-color);
@@ -33,9 +40,22 @@
   position: relative;
   font-weight: 400;
 }
+.more-read-box {
+  display: none;
+}
+.more-read-box::after {
+  content: '+';
+  display: inline-block;
+  font-weight: bold;
+  margin-left: 0.8rem;
+  transition: transform 0.3s ease-in-out;
+}
+.product-title.expanded .more-read-box::after {
+  content: '-';
+  transform: rotate(180deg);
+}
 /* em */
 .product-title em {
-  margin-bottom: 10%;
   font-size: 2.4rem;
   font-style: italic;
   font-weight: 600;
@@ -238,15 +258,17 @@
 }
 .compare {
   border: 1px solid #000;
-  padding: 42.7% 14.23%;
+
+  position: relative;
 }
-.product-list .compare > img {
-  width: 50px;
-  height: 50px;
-}
-.product-list .compare > .product-text {
+
+.product-list .compare > .product-text p {
   text-align: center;
-  margin-top: 3rem;
+  position: absolute;
+  bottom: 25%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
 }
 .product-list:nth-child(4) li:nth-child(2) {
   grid-column: 3/4;
@@ -332,9 +354,7 @@
     height: 42rem;
     grid-template-rows: 75% 25%;
   }
-  .compare {
-    padding: 30% 15%;
-  }
+
   .product-list li em {
     font-size: 1.5rem;
   }
@@ -355,13 +375,7 @@
     height: 30rem;
     grid-template-rows: 75% 25%;
   }
-  .compare {
-    padding: 30% 10%;
-  }
-  .product-list .compare > img {
-    width: 40px;
-    height: 40px;
-  }
+
   .product-text p {
     font-size: 1.2rem;
   }
@@ -390,5 +404,118 @@
   }
   .more-product {
     font-size: 1.6rem;
+  }
+}
+@media (max-width: 683px) {
+  .filter-list li {
+    padding-right: 2rem;
+  }
+}
+@media (max-width: 570px) {
+  .filter-list li {
+    padding-right: 2rem;
+  }
+  .product-title {
+    margin-top: 4rem;
+  }
+  .product-title h3 {
+    font-size: 5rem;
+    letter-spacing: -3px;
+  }
+  .product-title em {
+    font-size: 1.4rem;
+  }
+  .product-title .product-description {
+    font-size: 1.3rem;
+    color: #666;
+    display: -webkit-box;
+    word-wrap: break-word;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    /* transition: 0.5s ease-in-out; */
+  }
+  .product-title.expanded .product-description {
+    display: block;
+    -webkit-line-clamp: unset;
+    max-height: 1000px; /* 충분한 크기로 변경 */
+  }
+  .more-read-box {
+    display: block;
+    font-size: 1.4rem;
+    margin-top: 3rem;
+    cursor: pointer;
+    position: relative;
+    padding-right: 1.5rem;
+  }
+  .product-wrap {
+    height: auto;
+  }
+  .product-list {
+    display: flex;
+    flex-wrap: wrap;
+    white-space: wrap;
+    justify-content: start;
+    align-items: center;
+    height: auto;
+  }
+  .product-list li {
+    margin-top: 2rem;
+    width: calc(50% - 5px);
+  }
+  .product-list li.full-width {
+    width: 100%; /* 한 줄 전체 차지 */
+  }
+  .product-list:not(:first-child) {
+    margin-top: 0;
+  }
+  .product-list:nth-child(4) {
+    height: auto;
+  }
+  .product-list .img-wrap {
+    height: 100%;
+  }
+  .product-wrap .product-list li.compare {
+    margin-top: -20px;
+  }
+
+  .more-product {
+    padding: 1rem 7rem;
+    font-size: 1.4rem;
+    margin-top: 10rem;
+  }
+}
+@media (max-width: 420px) {
+  .filter-list li {
+    font-size: 1.4rem;
+  }
+  .product-text strong {
+    font-size: 1.3rem;
+    font-weight: 500;
+  }
+  .product-text p {
+    font-size: 1.1rem;
+  }
+  .product-list .compare > .product-text p {
+    bottom: 15%;
+  }
+  .product-title h3 {
+    font-size: 4.2rem;
+  }
+  .product-title em {
+    font-size: 1.2rem;
+  }
+  .product-title p {
+    font-size: 1.1rem;
+  }
+  .more-read-box {
+    font-size: 1.2rem;
+  }
+  .filter-label {
+    font-size: 1.2rem;
+  }
+  .option {
+    font-size: 1.2rem;
   }
 }
