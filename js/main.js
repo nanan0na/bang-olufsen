@@ -54,7 +54,6 @@ document.addEventListener('DOMContentLoaded', function () {
     trigger: video,
     start: '200% center',
     end: '200% bottom',
-    markers: true,
     onEnterBack: showCursor,
     onLeave: hideCursor,
     onEnter: () => {
