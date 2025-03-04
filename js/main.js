@@ -52,8 +52,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
   ScrollTrigger.create({
     trigger: video,
-    start: '250% center',
-    end: '300% bottom',
+    start: '200% center',
+    end: '200% bottom',
+    markers: true,
     onEnterBack: showCursor,
     onLeave: hideCursor,
     onEnter: () => {
@@ -74,8 +75,8 @@ document.addEventListener('DOMContentLoaded', function () {
   });
   ScrollTrigger.create({
     trigger: text,
-    start: '250% center',
-    end: '300% bottom',
+    start: '200% center',
+    end: '200% bottom',
     onEnter: () => {
       gsap.to(text, {
         ease: 'power2.out',
@@ -100,7 +101,7 @@ document.addEventListener('DOMContentLoaded', function () {
     scrollTrigger: {
       trigger: '.our-story',
       start: 'top top',
-      end: '1000% bottom',
+      end: '600% bottom',
       pin: '.our-story',
       scrub: true,
     },
